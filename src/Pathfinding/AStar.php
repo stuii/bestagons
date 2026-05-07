@@ -40,6 +40,10 @@ class AStar
                 }
             }
 
+            if ($currentKey === null) {
+                return null;
+            }
+
             $current = $openSet[$currentKey];
 
             if ($current->equalTo($goal)) {
