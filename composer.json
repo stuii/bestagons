@@ -1,0 +1,48 @@
+{
+    "name": "stui/bestagons",
+    "description": "PHP Library for creating hexagonal maps",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Stui\\Bestagons\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "stui",
+            "email": "me@stui.ch"
+        }
+    ],
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^13.1",
+        "friendsofphp/php-cs-fixer": "^3.95"
+    },
+
+    "scripts": {
+        "phpcsfixer-check": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/php-cs-fixer check --config=./.php-cs-fixer.dist.php --diff \"$@\""
+        ],
+        "phpcsfixer-fix": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/php-cs-fixer fix --config=./.php-cs-fixer.dist.php --diff \"$@\""
+        ],
+        "phpstan": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php vendor/bin/phpstan analyze -vv --memory-limit=-1 --configuration phpstan.neon.dist"
+        ],
+        "phpstan-generate-baseline": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php vendor/bin/phpstan analyze -vv --memory-limit=-1 --configuration phpstan.neon.dist --generate-baseline phpstan-baseline.php"
+        ],
+        "lint": [
+            "@phpcsfixer-check",
+            "@phpstan"
+        ]
+    }
+}
