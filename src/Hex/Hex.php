@@ -19,12 +19,19 @@ class Hex
         $this->r = $r;
         if ($s === null || $q + $r + $s !== 0) {
             $this->s = -$q - $r;
+        } else {
+            $this->s = $s;
         }
     }
 
     public function __toString(): string
     {
         return sprintf('%d*%d*%d', $this->q, $this->r, $this->s);
+    }
+
+    public function getKey(): string
+    {
+        return (string) $this;
     }
 
     public function equalTo(self $hex): bool

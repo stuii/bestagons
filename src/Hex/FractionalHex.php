@@ -20,6 +20,8 @@ class FractionalHex
 
         if ($s === null || $q + $r + $s !== 0.0) {
             $this->s = -$q - $r;
+        } else {
+            $this->s = $s;
         }
     }
 
